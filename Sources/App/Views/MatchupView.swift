@@ -50,6 +50,25 @@ struct MatchupView: View {
             }
             .padding(.vertical, 16)
         }
+        .scrollContentBackground(.hidden)
+        .background(
+            ZStack {
+                Color(red: 0.04, green: 0.03, blue: 0.08)
+                RadialGradient(
+                    colors: [Color(red: 0.54, green: 0.17, blue: 0.89).opacity(0.18), .clear],
+                    center: .topLeading,
+                    startRadius: 0,
+                    endRadius: 450
+                )
+                RadialGradient(
+                    colors: [Color(red: 0.0, green: 0.8, blue: 0.82).opacity(0.12), .clear],
+                    center: .bottomTrailing,
+                    startRadius: 0,
+                    endRadius: 550
+                )
+            }
+            .ignoresSafeArea()
+        )
         .sheet(isPresented: $isShowingAddSheet) {
             DeckDetailView()
         }
@@ -93,78 +112,79 @@ struct MatchupView: View {
     }
 
     private func horizontalPair(deck1: Deck, deck2: Deck) -> some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 24) {
             Spacer()
             
             matchupDeckCard(deck: deck1, index: 0)
-                .frame(maxWidth: 320)
+                .frame(maxWidth: 440)
             
             vsDivider
             
             matchupDeckCard(deck: deck2, index: 1)
-                .frame(maxWidth: 320)
+                .frame(maxWidth: 440)
             
             Spacer()
         }
     }
 
     private func verticalPair(deck1: Deck, deck2: Deck) -> some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             matchupDeckCard(deck: deck1, index: 0)
-                .frame(maxWidth: 320)
+                .frame(maxWidth: 440)
             
             vsDivider
             
             matchupDeckCard(deck: deck2, index: 1)
-                .frame(maxWidth: 320)
+                .frame(maxWidth: 440)
         }
     }
 
     private var vsDivider: some View {
         Text("VS")
-            .font(.system(size: 16, weight: .black, design: .rounded))
+            .font(.system(size: 22, weight: .black, design: .rounded))
             .foregroundColor(.secondary)
-            .padding(10)
-            .background(Color.primary.opacity(0.04))
+            .padding(16)
+            .background(.thinMaterial)
             .clipShape(Circle())
             .overlay(
                 Circle()
-                    .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+                    .stroke(Color.white.opacity(0.15), lineWidth: 1)
             )
+            .shadow(color: Color.black.opacity(0.1), radius: 6)
     }
 
     private func matchupDeckCard(deck: Deck, index: Int) -> some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 18) {
             ZStack(alignment: .topTrailing) {
                 PortraitView(imageUrl: deck.imageUrl, heroName: deck.hero, className: deck.className, colorSeed: deck.color)
                     .id(deck.id)
-                    .frame(width: 180, height: 252)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .shadow(color: Color.black.opacity(0.12), radius: 6, x: 0, y: 3)
+                    .frame(width: 260, height: 364)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 4)
                 
                 // Lock Button
                 Button(action: {
                     viewModel.matchupLocks[index].toggle()
                 }) {
                     Image(systemName: viewModel.matchupLocks[index] ? "lock.fill" : "lock.open")
-                        .font(.system(size: 12, weight: .bold))
+                        .font(.system(size: 13, weight: .bold))
                         .foregroundColor(viewModel.matchupLocks[index] ? .white : .primary)
-                        .frame(width: 32, height: 32)
+                        .frame(width: 38, height: 38)
                         .background(viewModel.matchupLocks[index] ? Color.accentColor : Color.primary.opacity(0.06))
                         .clipShape(Circle())
-                        .padding(8)
+                        .padding(12)
                 }
                 .buttonStyle(.plain)
             }
 
-            VStack(spacing: 4) {
+            VStack(spacing: 6) {
                 Text(deck.name)
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                 
                 Text("\(deck.hero) · \(deck.className)")
-                    .font(.system(size: 13))
+                    .font(.system(size: 15))
                     .foregroundColor(.secondary)
             }
 
@@ -211,13 +231,20 @@ struct MatchupView: View {
                         .font(.system(size: 10))
                         .foregroundColor(.secondary)
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 6)
-                .background(Color.primary.opacity(0.03))
-                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.primary.opacity(0.05), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(
+                            LinearGradient(
+                                colors: [.white.opacity(0.15), .white.opacity(0.03)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1
+                        )
                 )
             }
             .buttonStyle(.plain)
@@ -231,12 +258,22 @@ struct MatchupView: View {
                 }
             }
         }
-        .padding(14)
-        .background(Color.primary.opacity(0.02))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding(20)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 24))
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.primary.opacity(0.05), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 24)
+                .stroke(
+                    LinearGradient(
+                        colors: [
+                            .white.opacity(0.2),
+                            .white.opacity(0.05)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 1
+                )
         )
     }
 

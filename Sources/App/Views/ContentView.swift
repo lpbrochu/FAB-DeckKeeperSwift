@@ -59,16 +59,38 @@ struct ContentView: View {
     }
 
     var body: some View {
-        Group {
-            #if os(macOS)
-            toolbarLayout
-            #else
-            if sizeClass == .compact {
-                tabViewLayout
-            } else {
-                toolbarLayout
+        ZStack {
+            // Liquid glass background gradient
+            ZStack {
+                Color(red: 0.04, green: 0.03, blue: 0.08)
+                
+                RadialGradient(
+                    colors: [Color(red: 0.54, green: 0.17, blue: 0.89).opacity(0.18), .clear],
+                    center: .topLeading,
+                    startRadius: 0,
+                    endRadius: 450
+                )
+                
+                RadialGradient(
+                    colors: [Color(red: 0.0, green: 0.8, blue: 0.82).opacity(0.12), .clear],
+                    center: .bottomTrailing,
+                    startRadius: 0,
+                    endRadius: 550
+                )
             }
-            #endif
+            .ignoresSafeArea()
+
+            Group {
+                #if os(macOS)
+                toolbarLayout
+                #else
+                if sizeClass == .compact {
+                    tabViewLayout
+                } else {
+                    toolbarLayout
+                }
+                #endif
+            }
         }
         // File exporter modifier
         .fileExporter(
