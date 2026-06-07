@@ -84,6 +84,7 @@ struct MatchupView: View {
                 .foregroundColor(.white)
                 .background(Color.accentColor)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             .disabled(viewModel.decks.count < 2)
@@ -93,23 +94,29 @@ struct MatchupView: View {
 
     private func horizontalPair(deck1: Deck, deck2: Deck) -> some View {
         HStack(spacing: 20) {
+            Spacer()
+            
             matchupDeckCard(deck: deck1, index: 0)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: 320)
             
             vsDivider
             
             matchupDeckCard(deck: deck2, index: 1)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: 320)
+            
+            Spacer()
         }
     }
 
     private func verticalPair(deck1: Deck, deck2: Deck) -> some View {
         VStack(spacing: 16) {
             matchupDeckCard(deck: deck1, index: 0)
+                .frame(maxWidth: 320)
             
             vsDivider
             
             matchupDeckCard(deck: deck2, index: 1)
+                .frame(maxWidth: 320)
         }
     }
 
@@ -130,7 +137,7 @@ struct MatchupView: View {
         VStack(spacing: 12) {
             ZStack(alignment: .topTrailing) {
                 PortraitView(imageUrl: deck.imageUrl, heroName: deck.hero, className: deck.className, colorSeed: deck.color)
-                    .frame(height: 200)
+                    .frame(width: 140, height: 200)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .shadow(color: Color.black.opacity(0.12), radius: 6, x: 0, y: 3)
                 
