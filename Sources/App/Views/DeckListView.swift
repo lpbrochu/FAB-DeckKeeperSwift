@@ -39,6 +39,11 @@ struct DeckListView: View {
                 } header: {
                     // Pinned Header with frosted glass background
                     VStack(spacing: 12) {
+                        #if os(macOS)
+                        Spacer()
+                            .frame(height: 52)
+                        #endif
+
                         // Search Bar
                         HStack {
                             searchField
@@ -63,6 +68,7 @@ struct DeckListView: View {
                                 .background(Color.white.opacity(0.12))
                         }
                     )
+                    .ignoresSafeArea(edges: .top)
                 }
             }
         }

@@ -10,45 +10,65 @@ struct MatchupView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
-                // Header Cards
-                headerSection
-
-                // Matchup Pair Display
-                if let firstId = viewModel.matchupIds[0], let firstDeck = viewModel.decks.first(where: { $0.id == firstId }),
-                   let secondId = viewModel.matchupIds[1], let secondDeck = viewModel.decks.first(where: { $0.id == secondId }) {
-                    
-                    VStack(spacing: 16) {
-                        // Format Badge
-                        if !viewModel.matchupFormat.isEmpty {
-                            Text(viewModel.matchupFormat)
-                                .font(.system(size: 12, weight: .bold))
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .foregroundColor(.primary)
-                                .background(Color.primary.opacity(0.06))
-                                .clipShape(Capsule())
-                        }
+            LazyVStack(spacing: 24, pinnedViews: [.sectionHeaders]) {
+                Section {
+                    // Matchup Pair Display
+                    if let firstId = viewModel.matchupIds[0], let firstDeck = viewModel.decks.first(where: { $0.id == firstId }),
+                       let secondId = viewModel.matchupIds[1], let secondDeck = viewModel.decks.first(where: { $0.id == secondId }) {
                         
-                        #if os(macOS)
-                        horizontalPair(deck1: firstDeck, deck2: secondDeck)
-                        #else
-                        if sizeClass == .compact {
-                            verticalPair(deck1: firstDeck, deck2: secondDeck)
-                        } else {
+                        VStack(spacing: 16) {
+                            // Format Badge
+                            if !viewModel.matchupFormat.isEmpty {
+                                Text(viewModel.matchupFormat)
+                                    .font(.system(size: 12, weight: .bold))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .foregroundColor(.primary)
+                                    .background(Color.primary.opacity(0.06))
+                                    .clipShape(Capsule())
+                            }
+                            
+                            #if os(macOS)
                             horizontalPair(deck1: firstDeck, deck2: secondDeck)
+                            #else
+                            if sizeClass == .compact {
+                                verticalPair(deck1: firstDeck, deck2: secondDeck)
+                            } else {
+                                horizontalPair(deck1: firstDeck, deck2: secondDeck)
+                            }
+                            #endif
                         }
-                        #endif
-                    }
-                    .padding(.horizontal, 16)
-                    
-                } else {
-                    emptyState
                         .padding(.horizontal, 16)
-                        .padding(.top, 40)
+                        .padding(.bottom, 24)
+                        
+                    } else {
+                        emptyState
+                            .padding(.horizontal, 16)
+                            .padding(.top, 40)
+                            .padding(.bottom, 24)
+                    }
+                } header: {
+                    // Frosted Header containing selectors and Random Matchup title
+                    VStack(spacing: 0) {
+                        #if os(macOS)
+                        Spacer()
+                            .frame(height: 52)
+                        #endif
+                        
+                        headerSection
+                            .padding(.vertical, 16)
+                    }
+                    .background(.ultraThinMaterial)
+                    .overlay(
+                        VStack {
+                            Spacer()
+                            Divider()
+                                .background(Color.white.opacity(0.12))
+                        }
+                    )
+                    .ignoresSafeArea(edges: .top)
                 }
             }
-            .padding(.vertical, 16)
         }
         .scrollContentBackground(.hidden)
         .background(
