@@ -71,6 +71,7 @@ struct MatchupView: View {
             }
         }
         .scrollContentBackground(.hidden)
+        .ignoresSafeArea(edges: .top)
         .background(
             ZStack {
                 Color(red: 0.04, green: 0.03, blue: 0.08)

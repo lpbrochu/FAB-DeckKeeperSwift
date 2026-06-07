@@ -73,6 +73,7 @@ struct DeckListView: View {
             }
         }
         .scrollContentBackground(.hidden)
+        .ignoresSafeArea(edges: .top)
         .sheet(isPresented: $isShowingAddSheet) {
             DeckDetailView()
         }
