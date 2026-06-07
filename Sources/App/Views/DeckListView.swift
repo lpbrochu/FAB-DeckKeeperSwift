@@ -36,7 +36,7 @@ struct DeckListView: View {
                 emptyState
             } else {
                 ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 280), spacing: 12)], spacing: 12) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 340), spacing: 12)], spacing: 12) {
                         ForEach(viewModel.filteredDecks) { deck in
                             DeckCardView(
                                 deck: deck,

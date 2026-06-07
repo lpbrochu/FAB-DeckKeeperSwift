@@ -10,7 +10,7 @@ struct DeckCardView: View {
     var body: some View {
         HStack(spacing: 12) {
             PortraitView(imageUrl: deck.imageUrl, heroName: deck.hero, className: deck.className, colorSeed: deck.color)
-                .frame(width: 64, height: 88)
+                .frame(width: 90, height: 126)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .shadow(color: Color.black.opacity(0.12), radius: 4, x: 0, y: 2)
 

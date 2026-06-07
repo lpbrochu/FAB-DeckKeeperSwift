@@ -138,7 +138,7 @@ struct MatchupView: View {
             ZStack(alignment: .topTrailing) {
                 PortraitView(imageUrl: deck.imageUrl, heroName: deck.hero, className: deck.className, colorSeed: deck.color)
                     .id(deck.id)
-                    .frame(width: 140, height: 200)
+                    .frame(width: 180, height: 252)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .shadow(color: Color.black.opacity(0.12), radius: 6, x: 0, y: 3)
                 
