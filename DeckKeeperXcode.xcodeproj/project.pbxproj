@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A05153867B242089C497A14 /* DeckKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9150BA1EC1E402E9D5D1A2E /* DeckKeeperApp.swift */; };
+		98442CCBA85540AFB57210FC /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DEED7AC59419882212587 /* Deck.swift */; };
+		FD0E273DCD544E3CA27DE0B3 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954728CF65B04014B2ED11BF /* Hero.swift */; };
+		98A474C7D2034671BE60201A /* HeroCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BA7702AB46411791861748 /* HeroCatalog.swift */; };
+		DFA1F2D74CF243C489E32236 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ED10C676274A7796141F88 /* DeckStore.swift */; };
+		C77342F9F1544BC498254F4B /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A4F711ADA490089366B36 /* DeckViewModel.swift */; };
+		E2202992A20A40F386612866 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D2F70D1D74192B50B412C /* ContentView.swift */; };
+		E8A312ACD14F40FEA2EECBA9 /* DeckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C68BE47185345A8B11602DF /* DeckListView.swift */; };
+		EF0545001E40404EB1C9128A /* DeckCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52229F95AD43CBAC1D2A5B /* DeckCardView.swift */; };
+		E12D5F974B6F412A90E70379 /* DeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FBA6B1B27940B9B7E29957 /* DeckDetailView.swift */; };
+		D4E776589A8542499FD19BDD /* MatchupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F3C8E0CC54355917E56D3 /* MatchupView.swift */; };
+		3A113688EF114318BF415407 /* PortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F14D634D884DDF94CE8B12 /* PortraitView.swift */; };
+		BC458E4751B640CA9C48CF96 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C067E5AF074040D68379E166 /* CachedAsyncImage.swift */; };
+		71580963EF60445C91920E94 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4EC8E358FA4BE987030CE6 /* ChipView.swift */; };
+		AB699B831BE7469389BB8117 /* ColorSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D0E332984E4DF68FB1CABC /* ColorSeed.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		54643361904640F2A117E14D /* DeckKeeperXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeckKeeperXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9150BA1EC1E402E9D5D1A2E /* DeckKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "DeckKeeperApp.swift"; path = "DeckKeeperApp.swift"; sourceTree = "<group>"; };
+		C10DEED7AC59419882212587 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "Deck.swift"; path = "Deck.swift"; sourceTree = "<group>"; };
+		954728CF65B04014B2ED11BF /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "Hero.swift"; path = "Hero.swift"; sourceTree = "<group>"; };
+		39BA7702AB46411791861748 /* HeroCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "HeroCatalog.swift"; path = "HeroCatalog.swift"; sourceTree = "<group>"; };
+		60ED10C676274A7796141F88 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "DeckStore.swift"; path = "DeckStore.swift"; sourceTree = "<group>"; };
+		408A4F711ADA490089366B36 /* DeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "DeckViewModel.swift"; path = "DeckViewModel.swift"; sourceTree = "<group>"; };
+		A74D2F70D1D74192B50B412C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "ContentView.swift"; path = "ContentView.swift"; sourceTree = "<group>"; };
+		3C68BE47185345A8B11602DF /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "DeckListView.swift"; path = "DeckListView.swift"; sourceTree = "<group>"; };
+		7B52229F95AD43CBAC1D2A5B /* DeckCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "DeckCardView.swift"; path = "DeckCardView.swift"; sourceTree = "<group>"; };
+		55FBA6B1B27940B9B7E29957 /* DeckDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "DeckDetailView.swift"; path = "DeckDetailView.swift"; sourceTree = "<group>"; };
+		371F3C8E0CC54355917E56D3 /* MatchupView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "MatchupView.swift"; path = "MatchupView.swift"; sourceTree = "<group>"; };
+		57F14D634D884DDF94CE8B12 /* PortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "PortraitView.swift"; path = "PortraitView.swift"; sourceTree = "<group>"; };
+		C067E5AF074040D68379E166 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "CachedAsyncImage.swift"; path = "CachedAsyncImage.swift"; sourceTree = "<group>"; };
+		BD4EC8E358FA4BE987030CE6 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "ChipView.swift"; path = "ChipView.swift"; sourceTree = "<group>"; };
+		28D0E332984E4DF68FB1CABC /* ColorSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; name = "ColorSeed.swift"; path = "ColorSeed.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0ED9F218E9C94FE5A21A1349 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCFB9CA0C8A14900939460BC = {
+			isa = PBXGroup;
+			children = (
+				29DBBA8A6C4549AE857EA953 /* Sources */,
+				558BE17C41D446C395309172 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		29DBBA8A6C4549AE857EA953 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				794874A6689F4FF681416E56 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		794874A6689F4FF681416E56 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D9150BA1EC1E402E9D5D1A2E /* DeckKeeperApp.swift */,
+				B14D24095703447BAA7F6DF1 /* Models */,
+				57B39A8A927C4D81B9E81CE0 /* Services */,
+				40E4A5FD9C47474288584C6F /* ViewModels */,
+				765A2A1FA4F44489ABCDF718 /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B14D24095703447BAA7F6DF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C10DEED7AC59419882212587 /* Deck.swift */,
+				954728CF65B04014B2ED11BF /* Hero.swift */,
+				39BA7702AB46411791861748 /* HeroCatalog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		57B39A8A927C4D81B9E81CE0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				60ED10C676274A7796141F88 /* DeckStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		40E4A5FD9C47474288584C6F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				408A4F711ADA490089366B36 /* DeckViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		765A2A1FA4F44489ABCDF718 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A74D2F70D1D74192B50B412C /* ContentView.swift */,
+				3C68BE47185345A8B11602DF /* DeckListView.swift */,
+				7B52229F95AD43CBAC1D2A5B /* DeckCardView.swift */,
+				55FBA6B1B27940B9B7E29957 /* DeckDetailView.swift */,
+				371F3C8E0CC54355917E56D3 /* MatchupView.swift */,
+				91B0DF94CE7B41D0BA920FCB /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		91B0DF94CE7B41D0BA920FCB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				57F14D634D884DDF94CE8B12 /* PortraitView.swift */,
+				C067E5AF074040D68379E166 /* CachedAsyncImage.swift */,
+				BD4EC8E358FA4BE987030CE6 /* ChipView.swift */,
+				28D0E332984E4DF68FB1CABC /* ColorSeed.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		558BE17C41D446C395309172 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54643361904640F2A117E14D /* DeckKeeperXcode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F12018B82A14A01A48FE1BF /* DeckKeeperXcode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 562F7D0642BC4EABAD5D87C8 /* Build configuration list for PBXNativeTarget "DeckKeeperXcode" */;
+			buildPhases = (
+				F8495D53A2A44CC698AA7A69 /* Sources */,
+				0ED9F218E9C94FE5A21A1349 /* Frameworks */,
+				046C68F7568140BFB3D2B06B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeckKeeperXcode;
+			productName = DeckKeeperXcode;
+			productReference = 54643361904640F2A117E14D /* DeckKeeperXcode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAF47DD542F24FCB8EE891DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					4F12018B82A14A01A48FE1BF = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 27A7A8CFF9F045519256E372 /* Build configuration list for PBXProject "DeckKeeperXcode" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCFB9CA0C8A14900939460BC;
+			productRefGroup = 558BE17C41D446C395309172 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F12018B82A14A01A48FE1BF /* DeckKeeperXcode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		046C68F7568140BFB3D2B06B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8495D53A2A44CC698AA7A69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A05153867B242089C497A14 /* DeckKeeperApp.swift in Sources */,
+				98442CCBA85540AFB57210FC /* Deck.swift in Sources */,
+				FD0E273DCD544E3CA27DE0B3 /* Hero.swift in Sources */,
+				98A474C7D2034671BE60201A /* HeroCatalog.swift in Sources */,
+				DFA1F2D74CF243C489E32236 /* DeckStore.swift in Sources */,
+				C77342F9F1544BC498254F4B /* DeckViewModel.swift in Sources */,
+				E2202992A20A40F386612866 /* ContentView.swift in Sources */,
+				E8A312ACD14F40FEA2EECBA9 /* DeckListView.swift in Sources */,
+				EF0545001E40404EB1C9128A /* DeckCardView.swift in Sources */,
+				E12D5F974B6F412A90E70379 /* DeckDetailView.swift in Sources */,
+				D4E776589A8542499FD19BDD /* MatchupView.swift in Sources */,
+				3A113688EF114318BF415407 /* PortraitView.swift in Sources */,
+				BC458E4751B640CA9C48CF96 /* CachedAsyncImage.swift in Sources */,
+				71580963EF60445C91920E94 /* ChipView.swift in Sources */,
+				AB699B831BE7469389BB8117 /* ColorSeed.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B5B134C2214341ED8C9955DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF2252DEB91748DBBCEE091C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		36462FE6735E41398C94A9E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lpbrochu.DeckKeeperXcode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A86D8542134B47ACB76A03F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lpbrochu.DeckKeeperXcode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27A7A8CFF9F045519256E372 /* Build configuration list for PBXProject "DeckKeeperXcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5B134C2214341ED8C9955DF /* Debug */,
+				AF2252DEB91748DBBCEE091C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		562F7D0642BC4EABAD5D87C8 /* Build configuration list for PBXNativeTarget "DeckKeeperXcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36462FE6735E41398C94A9E9 /* Debug */,
+				A86D8542134B47ACB76A03F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAF47DD542F24FCB8EE891DD /* Project object */;
+}
