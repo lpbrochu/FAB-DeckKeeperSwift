@@ -16,10 +16,12 @@ struct PortraitView: View {
                 } placeholder: {
                     fallbackView
                 }
+                .id(url)
             } else {
                 fallbackView
             }
         }
+        .id("\(imageUrl)_\(heroName)")
     }
 
     private var fallbackView: some View {

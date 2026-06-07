@@ -62,8 +62,11 @@ class ImageLoader: ObservableObject {
 
     init(url: URL) {
         self.url = url
-        // Sanitize the URL path to extract a clean filename as a cache key
-        self.cacheKey = url.pathComponents.suffix(2).joined(separator: "_")
+        // Sanitize the absolute URL string to create a safe, collision-free filename
+        let allowed = CharacterSet.alphanumerics
+        let clean = url.absoluteString.unicodeScalars.map { allowed.contains($0) ? String($0) : "_" }.joined()
+        // Limit filename length to avoid filesystem limits (max 255 chars on APFS)
+        self.cacheKey = String(clean.suffix(120))
     }
 
     func load() {
