@@ -50,22 +50,18 @@ struct MatchupView: View {
                 } header: {
                     // Frosted Header containing selectors and Random Matchup title
                     VStack(spacing: 0) {
-                        #if os(macOS)
-                        Color.clear
-                            .frame(height: 72)
-                        #endif
-                        
                         headerSection
                             .padding(.vertical, 16)
                     }
+                    #if os(macOS)
+                    .padding(.top, 80)
+                    #endif
                     .background(.ultraThinMaterial)
-                    .overlay(
-                        VStack {
-                            Spacer()
-                            Divider()
-                                .background(Color.white.opacity(0.12))
-                        }
-                    )
+                    .overlay(alignment: .bottom) {
+                        Divider()
+                            .background(Color.white.opacity(0.12))
+                            .allowsHitTesting(false)
+                    }
                     .ignoresSafeArea(edges: .top)
                 }
             }
