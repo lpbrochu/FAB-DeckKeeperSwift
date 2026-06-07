@@ -80,6 +80,9 @@ struct ContentView: View {
             }
             .ignoresSafeArea()
 
+            // Frosted header backdrop behind transparent native toolbars
+            frostedHeaderBackdrop
+
             Group {
                 #if os(macOS)
                 toolbarLayout
@@ -131,6 +134,7 @@ struct ContentView: View {
         }
     }
 
+    #if !os(macOS)
     // MARK: - iPhone Layout
     private var tabViewLayout: some View {
         TabView(selection: $selectedTab) {
@@ -138,6 +142,7 @@ struct ContentView: View {
                 DeckListView()
                     .navigationTitle("Decks")
                     .toolbar { toolbarActions }
+                    .toolbarBackground(.hidden, for: .navigationBar)
             }
             .tabItem {
                 Label(Tab.decks.rawValue, systemImage: Tab.decks.icon)
@@ -148,6 +153,7 @@ struct ContentView: View {
                 MatchupView()
                     .navigationTitle("Matchup")
                     .toolbar { toolbarActions }
+                    .toolbarBackground(.hidden, for: .navigationBar)
             }
             .tabItem {
                 Label(Tab.matchup.rawValue, systemImage: Tab.matchup.icon)
@@ -155,6 +161,7 @@ struct ContentView: View {
             .tag(Tab.matchup)
         }
     }
+    #endif
 
     // MARK: - iPad & Mac Toolbar Layout
     private var toolbarLayout: some View {
@@ -181,6 +188,11 @@ struct ContentView: View {
                 
                 toolbarActions
             }
+            #if os(macOS)
+            .toolbarBackground(.hidden)
+            #else
+            .toolbarBackground(.hidden, for: .navigationBar)
+            #endif
         }
     }
 
@@ -254,5 +266,30 @@ struct ContentView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: Date())
+    }
+
+    // MARK: - Frosted Window Header Backdrop
+    private var frostedHeaderBackdrop: some View {
+        VStack {
+            #if os(macOS)
+            let headerHeight: CGFloat = 52
+            #else
+            let headerHeight: CGFloat = 44
+            #endif
+            
+            Color.clear
+                .frame(height: headerHeight)
+                .background(.ultraThinMaterial)
+                .overlay(
+                    VStack {
+                        Spacer()
+                        Divider()
+                            .background(Color.white.opacity(0.12))
+                    }
+                )
+                .ignoresSafeArea(edges: .top)
+            
+            Spacer()
+        }
     }
 }
