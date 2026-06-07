@@ -41,7 +41,7 @@ struct DeckListView: View {
                     VStack(spacing: 12) {
                         #if os(macOS)
                         Spacer()
-                            .frame(height: 52)
+                            .frame(height: 72)
                         #endif
 
                         // Search Bar

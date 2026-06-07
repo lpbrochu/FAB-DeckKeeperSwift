@@ -52,7 +52,7 @@ struct MatchupView: View {
                     VStack(spacing: 0) {
                         #if os(macOS)
                         Spacer()
-                            .frame(height: 52)
+                            .frame(height: 72)
                         #endif
                         
                         headerSection
