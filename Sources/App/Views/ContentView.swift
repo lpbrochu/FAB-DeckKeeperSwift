@@ -40,6 +40,10 @@ struct ContentView: View {
     @State private var importErrorMessage: String? = nil
     @State private var showImportError = false
 
+    // Navigation selection states for 3-column split view
+    @State private var selectedDeckId: UUID? = nil
+    @State private var isEditingSelectedDeck = false
+
     #if os(iOS)
     @Environment(\.horizontalSizeClass) var sizeClass
     #endif
@@ -106,6 +110,10 @@ struct ContentView: View {
             #if os(macOS)
             NSApplication.shared.activate(ignoringOtherApps: true)
             #endif
+            // Auto-select the first deck if none selected yet
+            if selectedDeckId == nil, let firstDeck = viewModel.decks.first {
+                selectedDeckId = firstDeck.id
+            }
         }
     }
 
@@ -145,6 +153,14 @@ struct ContentView: View {
             }
         )
         
+        let deckSelectionBinding = Binding<UUID?>(
+            get: { selectedDeckId },
+            set: { newValue in
+                selectedDeckId = newValue
+                isEditingSelectedDeck = false // Reset editing mode on selection change
+            }
+        )
+        
         return NavigationSplitView {
             List(Tab.allCases, selection: selectionBinding) { tab in
                 NavigationLink(value: tab) {
@@ -153,17 +169,69 @@ struct ContentView: View {
             }
             .navigationTitle("DeckKeeper")
             .listStyle(.sidebar)
+        } content: {
+            Group {
+                switch selectedTab {
+                case .decks:
+                    DeckListView(selectedDeckId: deckSelectionBinding)
+                case .matchup:
+                    VStack(spacing: 16) {
+                        Image(systemName: "gamecontroller")
+                            .font(.system(size: 36))
+                            .foregroundColor(.secondary)
+                        Text("Matchup Active")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+            }
+            .navigationTitle(selectedTab == .decks ? "Decks" : "")
         } detail: {
             NavigationStack {
                 Group {
                     switch selectedTab {
                     case .decks:
-                        DeckListView()
+                        if let deckId = selectedDeckId,
+                           let deck = viewModel.decks.first(where: { $0.id == deckId }) {
+                            if isEditingSelectedDeck {
+                                DeckDetailView(deckId: deckId, isInline: true) {
+                                    isEditingSelectedDeck = false
+                                }
+                            } else {
+                                DeckPreviewView(
+                                    deck: deck,
+                                    onEdit: {
+                                        isEditingSelectedDeck = true
+                                    },
+                                    onFavorite: {
+                                        withAnimation {
+                                            viewModel.toggleFavorite(id: deck.id)
+                                        }
+                                    },
+                                    onDelete: {
+                                        withAnimation {
+                                            viewModel.deleteDeck(id: deck.id)
+                                            selectedDeckId = viewModel.decks.first?.id
+                                        }
+                                    }
+                                )
+                            }
+                        } else {
+                            VStack(spacing: 12) {
+                                Image(systemName: "square.stack.3d.up")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(.secondary)
+                                Text("Select a Deck to View Details")
+                                    .font(.headline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
                     case .matchup:
                         MatchupView()
                     }
                 }
-                .navigationTitle(selectedTab.rawValue)
+                .navigationTitle(selectedTab == .decks ? (isEditingSelectedDeck ? "Edit Deck" : "Deck Details") : "Matchup")
                 .toolbar { toolbarActions }
             }
         }
@@ -198,6 +266,7 @@ struct ContentView: View {
                 Button("Reset Defaults", role: .destructive) {
                     withAnimation {
                         viewModel.resetToDefaults()
+                        selectedDeckId = viewModel.decks.first?.id
                     }
                 }
                 Button("Cancel", role: .cancel) {}

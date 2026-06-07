@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A113688EF114318BF415407 /* PortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F14D634D884DDF94CE8B12 /* PortraitView.swift */; };
+		3A113688EF114318BF415499 /* DeckPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F14D634D884DDF94CE8B99 /* DeckPreviewView.swift */; };
 		71580963EF60445C91920E94 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4EC8E358FA4BE987030CE6 /* ChipView.swift */; };
 		7A05153867B242089C497A14 /* DeckKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9150BA1EC1E402E9D5D1A2E /* DeckKeeperApp.swift */; };
 		98442CCBA85540AFB57210FC /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DEED7AC59419882212587 /* Deck.swift */; };
@@ -33,6 +34,7 @@
 		54643361904640F2A117E14D /* DeckKeeperXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeckKeeperXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FBA6B1B27940B9B7E29957 /* DeckDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckDetailView.swift; sourceTree = "<group>"; };
 		57F14D634D884DDF94CE8B12 /* PortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = PortraitView.swift; sourceTree = "<group>"; };
+		57F14D634D884DDF94CE8B99 /* DeckPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckPreviewView.swift; sourceTree = "<group>"; };
 		60ED10C676274A7796141F88 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckStore.swift; sourceTree = "<group>"; };
 		7B52229F95AD43CBAC1D2A5B /* DeckCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckCardView.swift; sourceTree = "<group>"; };
 		954728CF65B04014B2ED11BF /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = Hero.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				57F14D634D884DDF94CE8B12 /* PortraitView.swift */,
+				57F14D634D884DDF94CE8B99 /* DeckPreviewView.swift */,
 				C067E5AF074040D68379E166 /* CachedAsyncImage.swift */,
 				BD4EC8E358FA4BE987030CE6 /* ChipView.swift */,
 				28D0E332984E4DF68FB1CABC /* ColorSeed.swift */,
@@ -219,6 +222,7 @@
 				E12D5F974B6F412A90E70379 /* DeckDetailView.swift in Sources */,
 				D4E776589A8542499FD19BDD /* MatchupView.swift in Sources */,
 				3A113688EF114318BF415407 /* PortraitView.swift in Sources */,
+				3A113688EF114318BF415499 /* DeckPreviewView.swift in Sources */,
 				BC458E4751B640CA9C48CF96 /* CachedAsyncImage.swift in Sources */,
 				71580963EF60445C91920E94 /* ChipView.swift in Sources */,
 				AB699B831BE7469389BB8117 /* ColorSeed.swift in Sources */,

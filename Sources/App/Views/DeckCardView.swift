@@ -2,20 +2,23 @@ import SwiftUI
 
 struct DeckCardView: View {
     let deck: Deck
+    var isSelected: Bool = false
     let onFavorite: () -> Void
     let onEdit: () -> Void
+    var onSelect: (() -> Void)? = nil
     
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         HStack(spacing: 12) {
-            PortraitView(imageUrl: deck.imageUrl, heroName: deck.hero, className: deck.className, colorSeed: deck.color)
-                .frame(width: 64, height: 88)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .shadow(color: Color.black.opacity(0.12), radius: 4, x: 0, y: 2)
+            // Clickable content area
+            HStack(spacing: 12) {
+                PortraitView(imageUrl: deck.imageUrl, heroName: deck.hero, className: deck.className, colorSeed: deck.color)
+                    .frame(width: 64, height: 88)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .shadow(color: Color.black.opacity(0.12), radius: 4, x: 0, y: 2)
 
-            VStack(alignment: .leading, spacing: 4) {
-                HStack(alignment: .top, spacing: 8) {
+                VStack(alignment: .leading, spacing: 4) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(deck.name)
                             .font(.system(size: 16, weight: .bold))
@@ -28,58 +31,62 @@ struct DeckCardView: View {
                             .lineLimit(1)
                     }
 
-                    Spacer()
-
-                    // Quick Actions
-                    HStack(spacing: 4) {
-                        Button(action: onFavorite) {
-                            Image(systemName: deck.favorite ? "star.fill" : "star")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(deck.favorite ? .orange : .secondary)
-                                .frame(width: 28, height: 28)
-                                .background(Color.primary.opacity(0.04))
-                                .clipShape(Circle())
+                    // Tags in wrapping layout
+                    FlowLayout(spacing: 6) {
+                        ChipView(text: deck.format, index: 0)
+                        ChipView(text: deck.className, index: 1)
+                        ForEach(Array(deck.talents.enumerated()), id: \.offset) { i, talent in
+                            ChipView(text: talent, index: i + 2)
                         }
-                        .buttonStyle(.plain)
-
-                        Button(action: onEdit) {
-                            Image(systemName: "pencil")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(.secondary)
-                                .frame(width: 28, height: 28)
-                                .background(Color.primary.opacity(0.04))
-                                .clipShape(Circle())
-                        }
-                        .buttonStyle(.plain)
                     }
+
+                    Spacer(minLength: 0)
+
+                    // Notes
+                    Text(deck.notes.isEmpty ? "No notes yet" : deck.notes)
+                        .font(.system(size: 11))
+                        .foregroundColor(.secondary)
+                        .italic(deck.notes.isEmpty)
+                        .lineLimit(1)
                 }
-
-                // Tags in wrapping layout
-                FlowLayout(spacing: 6) {
-                    ChipView(text: deck.format, index: 0)
-                    ChipView(text: deck.className, index: 1)
-                    ForEach(Array(deck.talents.enumerated()), id: \.offset) { i, talent in
-                        ChipView(text: talent, index: i + 2)
-                    }
-                }
-
-                Spacer(minLength: 0)
-
-                // Notes
-                Text(deck.notes.isEmpty ? "No notes yet" : deck.notes)
-                    .font(.system(size: 11))
-                    .foregroundColor(.secondary)
-                    .italic(deck.notes.isEmpty)
-                    .lineLimit(1)
+                .padding(.vertical, 4)
             }
-            .padding(.vertical, 4)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                onSelect?()
+            }
+
+            Spacer()
+
+            // Quick Actions (not tap-captured by selection)
+            HStack(spacing: 4) {
+                Button(action: onFavorite) {
+                    Image(systemName: deck.favorite ? "star.fill" : "star")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundColor(deck.favorite ? .orange : .secondary)
+                        .frame(width: 28, height: 28)
+                        .background(Color.primary.opacity(0.04))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+
+                Button(action: onEdit) {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundColor(.secondary)
+                        .frame(width: 28, height: 28)
+                        .background(Color.primary.opacity(0.04))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(10)
-        .background(cardBackground)
+        .background(isSelected ? Color.accentColor.opacity(0.08) : cardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.primary.opacity(colorScheme == .dark ? 0.12 : 0.05), lineWidth: 1)
+                .stroke(isSelected ? Color.accentColor : Color.primary.opacity(colorScheme == .dark ? 0.12 : 0.05), lineWidth: isSelected ? 2 : 1)
         )
         .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.18 : 0.03), radius: 6, x: 0, y: 3)
     }

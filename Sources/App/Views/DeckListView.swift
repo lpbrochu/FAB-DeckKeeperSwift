@@ -8,6 +8,9 @@ struct DeckListView: View {
     @EnvironmentObject var viewModel: DeckViewModel
     @State private var editingDeckId: DeckIdentifier? = nil
     @State private var isShowingAddSheet = false
+    
+    // Optional selected deck binding for split-view layout
+    var selectedDeckId: Binding<UUID?>? = nil
 
     var body: some View {
         VStack(spacing: 0) {
@@ -40,6 +43,7 @@ struct DeckListView: View {
                         ForEach(viewModel.filteredDecks) { deck in
                             DeckCardView(
                                 deck: deck,
+                                isSelected: selectedDeckId?.wrappedValue == deck.id,
                                 onFavorite: {
                                     withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                         viewModel.toggleFavorite(id: deck.id)
@@ -47,6 +51,13 @@ struct DeckListView: View {
                                 },
                                 onEdit: {
                                     editingDeckId = DeckIdentifier(id: deck.id)
+                                },
+                                onSelect: {
+                                    if let selectedDeckId {
+                                        withAnimation {
+                                            selectedDeckId.wrappedValue = deck.id
+                                        }
+                                    }
                                 }
                             )
                         }
