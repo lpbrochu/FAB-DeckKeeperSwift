@@ -51,7 +51,7 @@ struct MatchupView: View {
                     // Frosted Header containing selectors and Random Matchup title
                     VStack(spacing: 0) {
                         #if os(macOS)
-                        Spacer()
+                        Color.clear
                             .frame(height: 72)
                         #endif
                         

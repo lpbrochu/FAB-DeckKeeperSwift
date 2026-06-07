@@ -40,7 +40,7 @@ struct DeckListView: View {
                     // Pinned Header with frosted glass background
                     VStack(spacing: 12) {
                         #if os(macOS)
-                        Spacer()
+                        Color.clear
                             .frame(height: 72)
                         #endif
 
