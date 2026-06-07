@@ -20,62 +20,47 @@ struct DeckDetailView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     #endif
 
-    var isInline: Bool = false
-    var onDismiss: (() -> Void)? = nil
-    
-    init(deckId: UUID? = nil, isInline: Bool = false, onDismiss: (() -> Void)? = nil) {
+    init(deckId: UUID? = nil) {
         self.deckId = deckId
-        self.isInline = isInline
-        self.onDismiss = onDismiss
     }
 
     var body: some View {
-        if isInline {
-            formContent
-                .onAppear(perform: populateData)
-        } else {
-            NavigationStack {
-                formContent
-                    .navigationTitle(deckId == nil ? "Add Deck" : "Edit Deck")
-                    .onAppear(perform: populateData)
-            }
-            #if os(macOS)
-            .frame(minWidth: 720, minHeight: 480)
-            #endif
-        }
-    }
-
-    private var formContent: some View {
-        Group {
-            #if os(macOS)
-            horizontalContent
-            #else
-            if sizeClass == .compact {
-                verticalContent
-            } else {
+        NavigationStack {
+            Group {
+                #if os(macOS)
                 horizontalContent
+                #else
+                if sizeClass == .compact {
+                    verticalContent
+                } else {
+                    horizontalContent
+                }
+                #endif
             }
+            .padding(20)
+            .navigationTitle(deckId == nil ? "Add Deck" : "Edit Deck")
+            #if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
             #endif
-        }
-        .padding(20)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    if isInline {
-                        onDismiss?()
-                    } else {
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }
-            }
-            
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    save()
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        save()
+                    }
+                    .disabled(name.isEmpty || hero.isEmpty || className.isEmpty)
                 }
-                .disabled(name.isEmpty || hero.isEmpty || className.isEmpty)
             }
+            .onAppear(perform: populateData)
         }
+        #if os(macOS)
+        .frame(minWidth: 720, minHeight: 480)
+        #endif
     }
 
     // MARK: - Layout Content
@@ -253,11 +238,6 @@ struct DeckDetailView: View {
             format: format,
             notes: notes
         )
-        
-        if isInline {
-            onDismiss?()
-        } else {
-            dismiss()
-        }
+        dismiss()
     }
 }
