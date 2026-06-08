@@ -2,13 +2,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "DeckKeeperSwift",
+    name: "FABDeckKeeper",
     platforms: [
         .iOS(.v17),
         .macOS(.v14)
     ],
     products: [
-        .executable(name: "DeckKeeperSwift", targets: ["App"])
+        .executable(name: "FAB Deck Keeper", targets: ["App"])
     ],
     dependencies: [],
     targets: [

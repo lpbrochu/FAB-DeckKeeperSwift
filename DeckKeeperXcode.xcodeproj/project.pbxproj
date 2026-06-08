@@ -30,7 +30,7 @@
 		39BA7702AB46411791861748 /* HeroCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = HeroCatalog.swift; sourceTree = "<group>"; };
 		3C68BE47185345A8B11602DF /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		408A4F711ADA490089366B36 /* DeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
-		54643361904640F2A117E14D /* DeckKeeperXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeckKeeperXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		54643361904640F2A117E14D /* FAB Deck Keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FAB Deck Keeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FBA6B1B27940B9B7E29957 /* DeckDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckDetailView.swift; sourceTree = "<group>"; };
 		57F14D634D884DDF94CE8B12 /* PortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = PortraitView.swift; sourceTree = "<group>"; };
 		60ED10C676274A7796141F88 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = DeckStore.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		558BE17C41D446C395309172 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				54643361904640F2A117E14D /* DeckKeeperXcode.app */,
+				54643361904640F2A117E14D /* FAB Deck Keeper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,8 +156,8 @@
 			dependencies = (
 			);
 			name = DeckKeeperXcode;
-			productName = DeckKeeperXcode;
-			productReference = 54643361904640F2A117E14D /* DeckKeeperXcode.app */;
+			productName = "FAB Deck Keeper";
+			productReference = 54643361904640F2A117E14D /* FAB Deck Keeper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -239,6 +239,8 @@
 				DEVELOPMENT_TEAM = 4VAAL7TA6W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "FAB Deck Keeper";
+				INFOPLIST_KEY_CFBundleName = "FAB Deck Keeper";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -248,7 +250,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lpbrochu.DeckKeeperXcode;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "FAB Deck Keeper";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.9;
@@ -267,6 +269,8 @@
 				DEVELOPMENT_TEAM = 4VAAL7TA6W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "FAB Deck Keeper";
+				INFOPLIST_KEY_CFBundleName = "FAB Deck Keeper";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -276,7 +280,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lpbrochu.DeckKeeperXcode;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "FAB Deck Keeper";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator maccatalyst";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.9;

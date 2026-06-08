@@ -1,5 +1,23 @@
 import SwiftUI
 
+extension View {
+    func panelSurface() -> some View {
+        self
+            .background(.ultraThinMaterial)
+            .background(Color(red: 0.20, green: 0.18, blue: 0.28).opacity(0.28))
+    }
+
+    func panelMaterial() -> some View {
+        self
+            .panelSurface()
+            .overlay(alignment: .bottom) {
+                Divider()
+                    .background(Color.white.opacity(0.12))
+                    .allowsHitTesting(false)
+            }
+    }
+}
+
 struct DeckIdentifier: Identifiable {
     let id: UUID
 }
@@ -10,66 +28,37 @@ struct DeckListView: View {
     @State private var isShowingAddSheet = false
 
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 16, pinnedViews: [.sectionHeaders]) {
-                Section {
-                    // Deck List Grid
-                    if viewModel.filteredDecks.isEmpty {
-                        emptyState
-                            .padding(.top, 40)
-                    } else {
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 480), spacing: 16)], spacing: 16) {
-                            ForEach(viewModel.filteredDecks) { deck in
-                                DeckCardView(
-                                    deck: deck,
-                                    onFavorite: {
-                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                            viewModel.toggleFavorite(id: deck.id)
-                                        }
-                                    },
-                                    onEdit: {
-                                        editingDeckId = DeckIdentifier(id: deck.id)
+        ZStack(alignment: .top) {
+            ScrollView {
+                // Deck List Grid
+                if viewModel.filteredDecks.isEmpty {
+                    emptyState
+                        .padding(.top, topPanelHeight + 40)
+                } else {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 480), spacing: 16)], spacing: 16) {
+                        ForEach(viewModel.filteredDecks) { deck in
+                            DeckCardView(
+                                deck: deck,
+                                onFavorite: {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                        viewModel.toggleFavorite(id: deck.id)
                                     }
-                                )
-                            }
+                                },
+                                onEdit: {
+                                    editingDeckId = DeckIdentifier(id: deck.id)
+                                }
+                            )
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 24)
-                    }
-                } header: {
-                    // Pinned Header with frosted glass background
-                    VStack(spacing: 12) {
-                        // Search Bar
-                        HStack {
-                            searchField
-                                .frame(maxWidth: 500)
-                            Spacer(minLength: 0)
-                        }
-                        .padding(.top, 12)
-
-                        // Filters Grid
-                        filterGrid
-
-                        // Section Header (Count & Sort)
-                        sectionHeader
-                            .padding(.bottom, 8)
                     }
                     .padding(.horizontal, 16)
-                    #if os(macOS)
-                    .padding(.top, 80)
-                    #endif
-                    .background(.ultraThinMaterial)
-                    .overlay(alignment: .bottom) {
-                        Divider()
-                            .background(Color.white.opacity(0.12))
-                            .allowsHitTesting(false)
-                    }
-                    .ignoresSafeArea(edges: .top)
+                    .padding(.top, topPanelHeight + 16)
+                    .padding(.bottom, 24)
                 }
             }
+            .scrollContentBackground(.hidden)
+
+            headerPanel
         }
-        .scrollContentBackground(.hidden)
-        .ignoresSafeArea(edges: .top)
         .sheet(isPresented: $isShowingAddSheet) {
             DeckDetailView()
         }
@@ -110,6 +99,40 @@ struct DeckListView: View {
             }
             #endif
         }
+    }
+
+    private var headerPanel: some View {
+        VStack(spacing: 12) {
+            // Search Bar
+            HStack {
+                searchField
+                    .frame(maxWidth: 500)
+                Spacer(minLength: 0)
+            }
+
+            // Filters Grid
+            filterGrid
+
+            // Section Header (Count & Sort)
+            sectionHeader
+                .padding(.bottom, 8)
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 12)
+        .background(alignment: .top) {
+            Color.clear
+                .panelSurface()
+                .ignoresSafeArea(edges: .top)
+        }
+        .overlay(alignment: .bottom) {
+            Divider()
+                .background(Color.white.opacity(0.12))
+                .allowsHitTesting(false)
+        }
+    }
+
+    private var topPanelHeight: CGFloat {
+        188
     }
 
     // MARK: - Components
@@ -292,5 +315,3 @@ struct DeckListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
-
-
